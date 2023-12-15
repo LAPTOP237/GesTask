@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../assets/css/account.css" type="text/css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <script defer src="../assets/js/dashboard.js"></script>
+    <script defer src="../assets/js/account.js"></script>
+    <title>GesTask - Gestion de compte</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="main-content">
+            <div class="navbar">
+                <button onclick="navigateTo('home')">Home</button>
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-info">
+                    <img src="../assets/images/default-user-img.png" alt="User Image">
+                    <span class="user-name">LAPTOP</span>
+                </div>
+            </div>
+            <div class="sidebar-with-content">
+                <div class="sidebar">
+                    <div class="appLogo">
+                        <i class="fas fa-tasks"></i> <span>GesTask</span> 
+                    </div>
+                    <button onclick="navigateTo('home')">Accueil</button>
+                    <button onclick="navigateTo('tasks')">Gestion des Tâches</button>
+                    <button class="active" onclick="navigateTo('account')">Gestion du Compte</button>
+                </div>
+                <div class="content">
+                    <h2>Gestion de compte</h2>
+                    <div class="profile">
+                        <img src="../assets/images/default-user-img.png" alt="User Avatar">
+                        <h2>LAPTOP</h2>
+                        <p>Email: linjouom9@gmail.com</p>
+                        <p>Numéro de téléphone: +237 694828353</p>
+                        <button id="editProfileBtn">Editer le  profil</button> <button id="ChangePasswordBtn">Changer de mot de passe</button>
+                    </div>
+                </div> 
+
+                <!-- Modal pour l'édition du profil -->
+                <div id="editProfileModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeEditProfileModal()">&times;</span>
+                        <h2>Édition du Profil</h2>
+                        <div>
+                            <label for="newUsername">Nom d'utilisateur :</label>
+                            <input type="text" id="newUsername" name="newUsername">
+                        </div>
+                        <div>
+                            <label for="newEmail">Email :</label>
+                            <input type="text" id="newEmail" name="newEmail">
+                        </div>
+                        <div>
+                            <label for="newTel">Numero de téléphone :</label>
+                            <input type="text" id="newTel" name="newTel">
+                        </div>
+                        <button onclick="saveProfileChanges()">Enregistrer</button>
+                    </div>
+                </div>
+
+                <!-- Modal pour le changement de mot de passe -->
+                <div id="changePasswordModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeChangePasswordModal()">&times;</span>
+                        <h2>Changement de Mot de Passe</h2>
+                        <div>
+                            <label for="currentPassword">Mot de Passe Actuel :</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div>
+                            <label for="newPassword">Nouveau Mot de Passe :</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div>
+                            <label for="confirmPassword">Confirmation du mot de passe :</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button onclick="changePassword()">Changer le Mot de Passe</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

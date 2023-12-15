@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/register.css">
+    <title>GesTask - Page d'enregistrement</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img id="img-register" src="../../assets/images/login.jpg" alt="Image">
+        </div>
+        <div class="right">
+            <h2>Inscription</h2>
+            <form id="registrationForm" onsubmit="return validateForm()">
+                
+                <div>
+                    <label for="fullName">Noms complets:</label>
+                    <input type="text" id="fullName" name="fullName" required pattern="^[^\{\}\(\)]*$">
+                </div>
+                
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="phoneNumber">Numéro de téléphone:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="^(62|68|67|65|69)\d{7}$">    
+                </div>
+                <div>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required minlength="5" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$">    
+                </div>
+                <div>
+                    <label for="confirmPassword">Vérification des mots de passe:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                
+                <button type="submit">S'inscrire</button>
+            </form>
+            <p id="error-message"></p>
+            
+            <div class="additional-options">
+                <a href="login.html">Vous avez-deja un compte ?</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/register.js"></script>
+</body>
+</html>

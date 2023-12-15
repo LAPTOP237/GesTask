@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <script defer src="../assets/js/dashboard.js"></script>
+    <title>GesTask - Dashboard</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="main-content">
+            <div class="navbar">
+                <button onclick="navigateTo('home')">Home</button>
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-info">
+                    <img src="../assets/images/default-user-img.png" alt="User Image">
+                    <span class="user-name">LAPTOP</span>
+                </div>
+            </div>
+            <div class="sidebar-with-content">
+                <div class="sidebar">
+                    <div class="appLogo">
+                        <i class="fas fa-tasks"></i> <span>GesTask</span> 
+                    </div>
+                    <button class="active" onclick="navigateTo('home')">Accueil</button>
+                    <button onclick="navigateTo('tasks')">Gestion des Tâches</button>
+                    <button onclick="navigateTo('account')">Gestion du Compte</button>
+                </div>
+                <div class="content">
+                    <h2>Bienvenue sur le Dashboard</h2>
+                    <div class="card-list">
+                        <div class="card">
+                            <h3>20</h3>
+                             <p>Taches total</p>
+                             <button>Détails</button>
+                        </div>
+                        <div class="card">
+                            <h3>20</h3>
+                             <p>Taches effectuées</p>
+                             <button>Détails</button>
+                        </div>
+                        <div class="card">
+                            <h3>20</h3>
+                             <p>Taches en cours</p>
+                             <button>Détails</button>
+                        </div>
+                        <div class="card">
+                            <h3>20</h3>
+                             <p>Taches Annulées</p>
+                             <button>Détails</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

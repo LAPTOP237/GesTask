@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../assets/css/task-management.css" type="text/css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <script defer src="../assets/js/dashboard.js"></script>
+    <script  defer src="../assets/js/task-management.js"></script>
+    <title>GesTask - Gestion des taches</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="main-content">
+            <div class="navbar">
+                <button onclick="navigateTo('home')">Home</button>
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-info">
+                    <img src="../assets/images/default-user-img.png" alt="User Image">
+                    <span class="user-name">LAPTOP</span>
+                </div>
+            </div>
+            <div class="sidebar-with-content">
+                <div class="sidebar">
+                    <div class="appLogo">
+                        <i class="fas fa-tasks"></i> <span>GesTask</span> 
+                    </div>
+                    <button onclick="navigateTo('home')">Accueil</button>
+                    <button class="active"  onclick="navigateTo('tasks')">Gestion des Tâches</button>
+                    <button onclick="navigateTo('account')">Gestion du Compte</button>
+                </div>
+                <div class="content">
+                    <h2>Gestion des tâches</h2>
+                    <div class="toolbar">
+                        <button id="newTaskModalBtn" >Nouvelle Tâche</button>
+                        <label for="filter">Filtrer par :</label>
+                        <select id="filter" onchange="applyFilters()">
+                            <option value="all">Toutes</option>
+                            <option value="completed">Terminées</option>
+                            <option value="canceled">Annulées</option>
+                            <option value="inProgress">En Cours</option>
+                        </select>
+                        <label for="sort">Classer par :</label>
+                        <select id="sort" onchange="applyFilters()">
+                            <option value="deadline">Date Limite</option>
+                            <option value="registrationDate">Date d'Enregistrement</option>
+                            <option value="name">Nom</option>
+                        </select>
+                    </div>
+                    <div id="taskList" class="task-list">
+                        <div class="task-card">
+                            <h3>Tache 1</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-1" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                        <div class="task-card">
+                            <h3>Tache 2</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-2" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                        <div class="task-card">
+                            <h3>Tache 3</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-3" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                        <div class="task-card">
+                            <h3>Tache 4</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-4" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                        <div class="task-card">
+                            <h3>Tache 5</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-5" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                        <div class="task-card">
+                            <h3>Tache 6</h3>
+                             <p>Date Limite: 12-03-2023</p>
+                             <button class="showTaskDetailsBtn" id="details-6" onclick="showTaskDetails('Nom de la Tâche', 'Description de la tâche', 'Date Limite', 'Date Enregistrement', 'Responsable')">Détails</button>
+                        </div>
+                    </div>
+                </div> 
+
+               <!-- Modal pour formulaire d'une nouvelle tache -->
+            <div id="newTaskModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeNewTaskModal()">&times;</span>
+                    <h2>Création de Tâche</h2>
+                    <form id="taskCreationForm">
+
+                        <div>
+                            <label for="taskName">Nom de la Tâche:</label>
+                            <input type="text" id="taskName" name="taskName" required>
+                        </div>
+
+                        <div>
+                            <label for="taskDescription">Description:</label>
+                            <textarea id="taskDescription" name="taskDescription"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="taskDeadline">Date Limite:</label>
+                            <input type="date" id="taskDeadline" name="taskDeadline" required>
+                        </div>
+
+                        <div>
+                            <label for="taskRegistrationDate">Date d'Enregistrement:</label>
+                            <input type="date" id="taskRegistrationDate" name="taskRegistrationDate" required>
+                        </div>
+
+                        <div>
+                            <label for="taskAssignee">Responsable:</label>
+                            <input type="text" id="taskAssignee" name="taskAssignee" required>
+                        </div>
+
+                        <button type="button" id="createTaskBtn" >Créer Tâche</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal pour les détails d'une tâche -->
+            <div id="taskDetailsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeTaskDetailsModal()">&times;</span>
+                    <h2>Détails de la Tâche</h2>
+                    <div id="taskDetails">
+                        <p><strong>Nom de la Tâche:</strong> <span id="taskNameDetail"></span></p>
+                        <p><strong>Date Limite:</strong> <span id="taskDeadlineDetail"></span></p>
+                        <p><strong>Description:</strong> <span id="taskDescription"></span></p>
+                        <p><strong>Date d'Enregistrement:</strong> <span id="taskRegistrationDate"></span></p>
+                        <p><strong>Responsable:</strong> <span id="taskAssignee"></span></p>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn-confirm" onclick="completeTask()">Marquer comme Effectuée</button>
+                        <button class="btn-annuler" onclick="cancelTask()">Annuler la Tâche</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
